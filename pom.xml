@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Родительский POM (управляет версиями) -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.18</version>  <!-- Стабильная версия Spring Boot 2.x -->
+		<relativePath/>
+	</parent>
+
+	<groupId>pro.sky</groupId>
+	<artifactId>telegram-bot</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>telegram-bot</name>
+	<description>Telegram Bot with Spring Boot</description>
+
+	<properties>
+		<java.version>11</java.version>
+		<telegrambot.version>6.8.0</telegrambot.version>  <!-- Версия Telegram Bot API -->
+	</properties>
+
+	<dependencies>
+		<!-- Базовые зависимости Spring Boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<!-- Веб-функциональность (REST API) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.pengrad</groupId>
+			<artifactId>java-telegram-bot-api</artifactId>
+			<version>${telegrambot.version}</version>
+		</dependency>
+
+		<!-- База данных (PostgreSQL + JPA) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Тестирование -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Плагин для сборки Spring Boot -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- Компиляция с Java 11 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
